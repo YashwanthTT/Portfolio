@@ -1,54 +1,7 @@
 <script lang="ts">
-	const name = 'Yashwanth';
-	const role = 'Software Engineer';
+	import { portfolio } from '$lib/data/portfolio';
 
-	const socials = [
-		{ label: 'GitHub', href: 'https://github.com/' },
-		{ label: 'LinkedIn', href: 'https://linkedin.com/' },
-		{ label: 'Twitter', href: 'https://twitter.com/' },
-		{ label: 'Email', href: 'mailto:hello@example.com' }
-	];
-
-	const experience = [
-		{
-			company: 'Acme Corp',
-			role: 'Senior Software Engineer',
-			period: '2024 — Present',
-			location: 'Remote',
-			points: [
-				'Lead the design and build of a customer-facing analytics platform used by 10k+ users.',
-				'Reduced p95 page load by 38% by rearchitecting the data-fetching layer.'
-			]
-		},
-		{
-			company: 'Northwind Labs',
-			role: 'Software Engineer',
-			period: '2022 — 2024',
-			location: 'Bangalore, IN',
-			points: [
-				'Built and shipped the payments microservice handling $2M+ monthly volume.',
-				'Migrated the legacy monolith to a typed, modular TypeScript codebase.'
-			]
-		},
-		{
-			company: 'Contoso',
-			role: 'Frontend Engineer Intern',
-			period: '2021 — 2022',
-			location: 'Hybrid',
-			points: [
-				'Implemented the marketing site redesign with a focus on accessibility and Core Web Vitals.'
-			]
-		}
-	];
-
-	const projects = [
-		{
-			name: 'Loom',
-			tagline: 'Coding Agent that helps you write code faster.',
-			stack: ['TypeScript', 'OpenTUI'],
-			href: '#'
-		}
-	];
+	const { name, role, about, socials, experience, projects } = portfolio;
 </script>
 
 <svelte:head>
@@ -64,11 +17,6 @@
 				<span class="dot"></span>
 				<span>{name.toLowerCase()}.dev</span>
 			</a>
-			<nav class="nav">
-				<a href="#about">About</a>
-				<a href="#experience">Experience</a>
-				<a href="#projects">Projects</a>
-			</nav>
 		</header>
 
 		<!-- ABOUT + SOCIALS -->
@@ -76,33 +24,52 @@
 			<div class="about-left">
 				<p class="eyebrow">About</p>
 				<h1>
-					Hi, I'm {name} — a {role.toLowerCase()} building thoughtful, fast, well-crafted software for
-					the web.
+					Hi, I'm {name} — a {role.toLowerCase()}
+					{about.intro}
 				</h1>
-				<p class="lede">
-					I care about the small details — typography, motion, performance, and the quiet craft of a
-					clean interface. Most of my time goes into building tools, interfaces, and infrastructure
-					that feel effortless to use.
-				</p>
-				<p class="lede muted">
-					Currently exploring systems design, edge runtimes, and the intersection of local-first
-					software with the modern web.
-				</p>
-			</div>
+				{#each about.paragraphs as paragraph, index}
+					<p class:muted={index === 1} class="lede">{paragraph}</p>
+				{/each}
 
-			<aside class="about-right">
-				<p class="eyebrow">Elsewhere</p>
-				<ul class="socials">
-					{#each socials as s}
-						<li>
-							<a href={s.href} target="_blank" rel="noreferrer">
-								<span>{s.label}</span>
-								<span class="arrow" aria-hidden="true">↗</span>
-							</a>
-						</li>
-					{/each}
-				</ul>
-			</aside>
+				<div class="socials-wrap">
+					<p class="eyebrow">Find me online</p>
+					<ul class="socials">
+						{#each socials as s (s.label)}
+							<li>
+								<a href={s.href} target="_blank" rel="noreferrer" aria-label={s.label}>
+									{#if s.label === 'GitHub'}
+										<svg viewBox="0 0 24 24" aria-hidden="true">
+											<path
+												d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.69c-2.78.6-3.37-1.18-3.37-1.18-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 7.85c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"
+											/>
+										</svg>
+									{:else if s.label === 'LinkedIn'}
+										<svg viewBox="0 0 24 24" aria-hidden="true">
+											<path
+												d="M6.5 8.5A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3.5ZM5 9.75h3v9.75H5V9.75Zm4.75 0h2.88v1.33h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6v5.38h-3v-4.77c0-1.14-.02-2.6-1.58-2.6-1.58 0-1.82 1.23-1.82 2.52v4.85h-2.96V9.75Z"
+											/>
+										</svg>
+									{:else if s.label === 'Twitter'}
+										<svg viewBox="0 0 24 24" aria-hidden="true">
+											<path
+												d="M18.9 2H22l-6.77 7.74L23.2 22h-6.25l-4.9-6.41L6.44 22H3.32l7.24-8.28L2.8 2h6.4l4.43 5.86L18.9 2Zm-1.1 17.9h1.73L8.28 3.98H6.42L17.8 19.9Z"
+											/>
+										</svg>
+									{:else}
+										<svg viewBox="0 0 24 24" aria-hidden="true">
+											<path
+												d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13Zm2.5-.75a.75.75 0 0 0-.75.75v.35L12 10.7l7.25-4.85V5.5a.75.75 0 0 0-.75-.75h-13ZM19.25 8.1 12.42 12.7a.75.75 0 0 1-.84 0L4.75 8.1v10.4c0 .41.34.75.75.75h13a.75.75 0 0 0 .75-.75V8.1Z"
+											/>
+										</svg>
+									{/if}
+									<span>{s.label}</span>
+									<span class="arrow" aria-hidden="true">↗</span>
+								</a>
+							</li>
+						{/each}
+					</ul>
+				</div>
+			</div>
 		</section>
 
 		<!-- EXPERIENCE -->
@@ -265,28 +232,16 @@
 		box-shadow: 0 0 0 4px rgba(199, 242, 132, 0.12);
 	}
 
-	.nav {
-		display: flex;
-		gap: 28px;
-		font-size: 14px;
-		color: var(--fg-muted);
-	}
-
-	.nav a {
-		transition: color 0.15s ease;
-	}
-
-	.nav a:hover {
-		color: var(--fg);
-	}
-
 	/* ABOUT */
 	.about {
-		display: grid;
-		grid-template-columns: 1fr 220px;
-		gap: 56px;
 		padding-bottom: 96px;
 		border-bottom: 1px solid var(--line);
+	}
+
+	.about-left {
+		width: 100%;
+		max-width: 760px;
+		margin: 0 auto;
 	}
 
 	.eyebrow {
@@ -319,8 +274,12 @@
 		color: var(--fg-muted);
 	}
 
-	.about-right .eyebrow {
-		color: var(--fg-dim);
+	.socials-wrap {
+		margin-top: 36px;
+	}
+
+	.socials-wrap .eyebrow {
+		margin-bottom: 12px;
 	}
 
 	.socials {
@@ -328,22 +287,29 @@
 		margin: 0;
 		padding: 0;
 		display: flex;
-		flex-direction: column;
-		gap: 2px;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 8px;
 	}
 
 	.socials a {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		padding: 10px 12px;
-		margin: 0 -12px;
+		gap: 8px;
+		padding: 9px 12px;
 		border-radius: 8px;
 		font-size: 14px;
 		color: var(--fg-muted);
 		transition:
 			color 0.15s ease,
 			background 0.15s ease;
+	}
+
+	.socials svg {
+		width: 16px;
+		height: 16px;
+		fill: currentColor;
+		flex: 0 0 auto;
 	}
 
 	.socials a:hover {
@@ -554,12 +520,7 @@
 		.topbar {
 			padding-bottom: 48px;
 		}
-		.nav {
-			gap: 18px;
-		}
 		.about {
-			grid-template-columns: 1fr;
-			gap: 40px;
 			padding-bottom: 64px;
 		}
 		.section {
