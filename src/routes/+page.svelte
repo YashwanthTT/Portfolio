@@ -43,27 +43,9 @@
 
 	const projects = [
 		{
-			name: 'Lumen',
-			tagline: 'A minimal, type-safe ORM for the edge.',
-			stack: ['TypeScript', 'SQLite', 'WASM'],
-			href: '#'
-		},
-		{
-			name: 'Drift',
-			tagline: 'Realtime collaborative whiteboard with CRDT sync.',
-			stack: ['Rust', 'WebSockets', 'Svelte'],
-			href: '#'
-		},
-		{
-			name: 'Ink',
-			tagline: 'Markdown-first writing app with local-first sync.',
-			stack: ['Tauri', 'CRDT', 'Zustand'],
-			href: '#'
-		},
-		{
-			name: 'Halo',
-			tagline: 'CLI for visualising deploys across environments.',
-			stack: ['Go', 'Bubble Tea'],
+			name: 'Loom',
+			tagline: 'Coding Agent that helps you write code faster.',
+			stack: ['TypeScript', 'OpenTUI'],
 			href: '#'
 		}
 	];
