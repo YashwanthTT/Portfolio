@@ -6,7 +6,7 @@
 
 <section id="projects" class="section">
 	<header class="section-head">
-		<p class="eyebrow">Projects</p>
+		<p class="eyebrow"><span class="section-dot"></span>Projects</p>
 	</header>
 
 	<div class="projects">
@@ -30,6 +30,9 @@
 		padding: 80px 0;
 	}
 	.eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 12px;
 		margin: 0 0 20px;
 		color: var(--fg-muted);
 		font-family: 'JetBrains Mono', ui-monospace, monospace;
@@ -37,6 +40,14 @@
 		font-weight: 600;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
+	}
+	.section-dot {
+		width: 10px;
+		height: 10px;
+		flex: 0 0 auto;
+		border-radius: 50%;
+		background: var(--accent);
+		opacity: 0.78;
 	}
 	.section-head {
 		margin-bottom: 40px;

@@ -10,7 +10,6 @@
 <section id="about" class="about">
 	<div class="about-content">
 		<div class="about-copy">
-			<p class="eyebrow">About me</p>
 			<h1>Hi, I'm {name} <span class="dash">—</span> a {role.toLowerCase()} {about.intro}</h1>
 			{#each about.paragraphs as paragraph, index (paragraph)}
 				<p class:muted={index === 1} class="lede">{paragraph}</p>
