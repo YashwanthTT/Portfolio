@@ -31,9 +31,10 @@
 	}
 	.eyebrow {
 		margin: 0 0 20px;
-		color: var(--fg-dim);
+		color: var(--fg-muted);
 		font-family: 'JetBrains Mono', ui-monospace, monospace;
 		font-size: 13px;
+		font-weight: 600;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 	}
@@ -74,9 +75,9 @@
 	.project p {
 		flex: 1;
 		margin: 0;
-		color: var(--fg-muted);
-		font-size: 14px;
-		line-height: 1.55;
+		color: var(--fg-body);
+		font-size: 15px;
+		line-height: 1.6;
 	}
 	.stack {
 		display: flex;

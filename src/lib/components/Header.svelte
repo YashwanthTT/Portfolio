@@ -60,7 +60,8 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 10px;
-		font-weight: 500;
+		color: var(--fg);
+		font-weight: 600;
 		font-size: 14px;
 		letter-spacing: -0.01em;
 	}
@@ -80,10 +81,11 @@
 		padding: 6px 10px 6px 7px;
 		border: 1px solid var(--line);
 		border-radius: 999px;
-		background: var(--control-bg);
+		background: transparent;
 		color: var(--fg-muted);
 		font: inherit;
 		font-size: 12px;
+		line-height: 1;
 		cursor: pointer;
 		transition:
 			border-color 0.2s ease,
@@ -92,7 +94,7 @@
 	}
 
 	.theme-toggle:hover {
-		border-color: var(--line-strong);
+		border-color: var(--line);
 		background: var(--control-hover);
 		color: var(--fg);
 	}

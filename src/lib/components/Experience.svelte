@@ -46,8 +46,9 @@
 	}
 	.eyebrow {
 		margin: 0 0 20px;
-		color: var(--fg-dim);
+		color: var(--fg-muted);
 		font-size: 13px;
+		font-weight: 600;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 	}
@@ -77,7 +78,7 @@
 		flex-direction: column;
 		gap: 4px;
 		padding-top: 2px;
-		color: var(--fg-dim);
+		color: var(--fg-muted);
 		font-size: 12px;
 		letter-spacing: 0.02em;
 	}
@@ -107,7 +108,7 @@
 		margin-bottom: 6px;
 		padding-left: 18px;
 		color: var(--fg-body);
-		font-size: 14px;
+		font-size: 15px;
 		line-height: 1.6;
 	}
 	.job-body li::before {

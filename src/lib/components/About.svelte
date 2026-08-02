@@ -68,8 +68,8 @@
 		grid-template-columns: minmax(0, 1fr) 220px;
 		align-items: center;
 		gap: clamp(36px, 7vw, 80px);
-		max-width: 900px;
-		margin: 0 auto;
+		max-width: var(--max);
+		margin: 0;
 	}
 
 	.about-copy {
@@ -78,9 +78,10 @@
 
 	.eyebrow {
 		margin: 0 0 20px;
-		color: var(--fg-dim);
+		color: var(--fg-muted);
 		font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 		font-size: 13px;
+		font-weight: 600;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 	}
@@ -99,11 +100,11 @@
 	}
 
 	.lede {
-		max-width: 60ch;
+		max-width: 62ch;
 		margin: 0 0 14px;
 		color: var(--fg-body);
 		font-size: 16px;
-		line-height: 1.65;
+		line-height: 1.7;
 	}
 
 	.lede.muted {
@@ -130,7 +131,7 @@
 		justify-content: space-between;
 		gap: 8px;
 		padding: 11px 0;
-		color: var(--fg-muted);
+		color: var(--fg-body);
 		font-size: 14px;
 		transition:
 			color 0.15s ease,
@@ -169,8 +170,8 @@
 	}
 
 	.socials a:hover .social-icon {
-		border-color: var(--line-strong);
-		background: rgba(199, 242, 132, 0.08);
+		border-color: var(--line);
+		background: rgba(199, 242, 132, 0.07);
 	}
 
 	@media (max-width: 760px) {

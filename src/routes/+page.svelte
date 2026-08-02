@@ -31,11 +31,11 @@
 		--bg-elev: #111111;
 		--line: rgba(255, 255, 255, 0.08);
 		--fg: #ededed;
-		--fg-body: #c4c4c4;
-		--fg-muted: #8a8a8a;
-		--fg-dim: #5a5a5a;
+		--fg-body: #d0d0d0;
+		--fg-muted: #9b9b9b;
+		--fg-dim: #737373;
 		--control-bg: rgba(255, 255, 255, 0.035);
-		--control-hover: rgba(255, 255, 255, 0.08);
+		--control-hover: rgba(255, 255, 255, 0.05);
 		--icon-bg: rgba(255, 255, 255, 0.025);
 		--accent: #c7f284;
 		--radius: 14px;
@@ -48,12 +48,12 @@
 		--line: rgba(31, 42, 31, 0.13);
 		--line-strong: rgba(31, 42, 31, 0.24);
 		--fg: #1d261d;
-		--fg-body: #3f4b3f;
-		--fg-muted: #657065;
-		--fg-dim: #7f8a7f;
+		--fg-body: #435043;
+		--fg-muted: #687468;
+		--fg-dim: #737e73;
 		--accent: #71983c;
 		--control-bg: rgba(255, 255, 255, 0.55);
-		--control-hover: rgba(255, 255, 255, 0.9);
+		--control-hover: rgba(29, 38, 29, 0.06);
 		--icon-bg: rgba(255, 255, 255, 0.62);
 	}
 
@@ -70,6 +70,7 @@
 			Arial,
 			sans-serif;
 		font-feature-settings: 'cv11', 'ss01', 'ss03';
+		line-height: 1.5;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}

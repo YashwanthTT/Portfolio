@@ -12,7 +12,7 @@
 		display: flex;
 		justify-content: space-between;
 		padding-top: 56px;
-		color: var(--fg-dim);
+		color: var(--fg-muted);
 		font-family: 'JetBrains Mono', ui-monospace, monospace;
 		font-size: 12px;
 	}
