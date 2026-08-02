@@ -1,9 +1,9 @@
 <script lang="ts">
-	import About from '$lib/components/About.svelte';
-	import Experience from '$lib/components/Experience.svelte';
+	import About from '$lib/components/about/About.svelte';
+	import Experience from '$lib/components/experience/Experience.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
-	import Projects from '$lib/components/Projects.svelte';
+	import Projects from '$lib/components/projects/Projects.svelte';
 	import { portfolio } from '$lib/data/portfolio';
 
 	const { name, role, about, socials, experience, projects } = portfolio;
