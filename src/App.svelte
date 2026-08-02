@@ -1,17 +1,17 @@
 <script lang="ts">
-	import About from '$lib/components/about/About.svelte';
-	import Experience from '$lib/components/experience/Experience.svelte';
+	import About from '$lib/components/About.svelte';
+	import Experience from '$lib/components/Experience.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
-	import Projects from '$lib/components/projects/Projects.svelte';
-	import { portfolio } from '$lib/data/portfolio';
+	import Projects from '$lib/components/Projects.svelte';
+	import { portfolio } from '$lib/content/portfolio';
 
 	const { name, role, about, socials, experience, projects } = portfolio;
-</script>
 
-<svelte:head>
-	<title>{name} — {role}</title>
-</svelte:head>
+	$effect(() => {
+		document.title = `${name} — ${role}`;
+	});
+</script>
 
 <main>
 	<div class="grid-bg" aria-hidden="true"></div>
@@ -94,7 +94,6 @@
 		min-height: 100vh;
 		isolation: isolate;
 	}
-
 	.grid-bg {
 		position: fixed;
 		inset: 0;
@@ -108,13 +107,11 @@
 		-webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
 		pointer-events: none;
 	}
-
 	.page {
 		max-width: var(--max);
 		margin: 0 auto;
 		padding: 28px 28px 80px;
 	}
-
 	@media (max-width: 760px) {
 		.page {
 			padding: 20px 20px 60px;
