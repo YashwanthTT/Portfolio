@@ -75,16 +75,6 @@
 		max-width: 680px;
 	}
 
-	.eyebrow {
-		margin: 0 0 20px;
-		color: var(--fg-muted);
-		font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: 13px;
-		font-weight: 600;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-	}
-
 	h1 {
 		margin: 0 0 28px;
 		color: var(--fg);

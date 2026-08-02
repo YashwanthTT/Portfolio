@@ -38,6 +38,7 @@
 		--control-hover: rgba(255, 255, 255, 0.05);
 		--icon-bg: rgba(255, 255, 255, 0.025);
 		--accent: #c7f284;
+		--selection-bg: #c7f284;
 		--radius: 14px;
 		--max: 980px;
 	}
@@ -52,6 +53,7 @@
 		--fg-muted: #687468;
 		--fg-dim: #737e73;
 		--accent: #71983c;
+		--selection-bg: #ffcf5c;
 		--control-bg: rgba(255, 255, 255, 0.55);
 		--control-hover: rgba(29, 38, 29, 0.06);
 		--icon-bg: rgba(255, 255, 255, 0.62);
@@ -83,7 +85,7 @@
 		text-decoration: none;
 	}
 	:global(::selection) {
-		background: var(--accent);
+		background: var(--selection-bg);
 		color: #0a0a0a;
 	}
 
