@@ -101,7 +101,7 @@
 	.lede {
 		max-width: 60ch;
 		margin: 0 0 14px;
-		color: #c4c4c4;
+		color: var(--fg-body);
 		font-size: 16px;
 		line-height: 1.65;
 	}
@@ -147,7 +147,7 @@
 		padding: 6px;
 		border: 1px solid var(--line);
 		border-radius: 8px;
-		background: rgba(255, 255, 255, 0.025);
+		background: var(--icon-bg);
 		fill: currentColor;
 		flex: 0 0 auto;
 		transition:

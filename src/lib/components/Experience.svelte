@@ -106,7 +106,7 @@
 		position: relative;
 		margin-bottom: 6px;
 		padding-left: 18px;
-		color: #c4c4c4;
+		color: var(--fg-body);
 		font-size: 14px;
 		line-height: 1.6;
 	}

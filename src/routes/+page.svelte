@@ -31,11 +31,30 @@
 		--bg-elev: #111111;
 		--line: rgba(255, 255, 255, 0.08);
 		--fg: #ededed;
+		--fg-body: #c4c4c4;
 		--fg-muted: #8a8a8a;
 		--fg-dim: #5a5a5a;
+		--control-bg: rgba(255, 255, 255, 0.035);
+		--control-hover: rgba(255, 255, 255, 0.08);
+		--icon-bg: rgba(255, 255, 255, 0.025);
 		--accent: #c7f284;
 		--radius: 14px;
 		--max: 980px;
+	}
+
+	:global(:root[data-theme='light']) {
+		--bg: #f3f4ee;
+		--bg-elev: #fffdf8;
+		--line: rgba(31, 42, 31, 0.13);
+		--line-strong: rgba(31, 42, 31, 0.24);
+		--fg: #1d261d;
+		--fg-body: #3f4b3f;
+		--fg-muted: #657065;
+		--fg-dim: #7f8a7f;
+		--accent: #71983c;
+		--control-bg: rgba(255, 255, 255, 0.55);
+		--control-hover: rgba(255, 255, 255, 0.9);
+		--icon-bg: rgba(255, 255, 255, 0.62);
 	}
 
 	:global(html, body) {
