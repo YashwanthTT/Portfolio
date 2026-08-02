@@ -46,7 +46,7 @@
 									/></svg
 								>
 							{/if}
-							<span>{social.label}</span>
+							<span class="social-label">{social.label}</span>
 							<span class="arrow" aria-hidden="true">↗</span>
 						</a>
 					</li>
@@ -144,6 +144,7 @@
 	.social-icon {
 		width: 30px;
 		height: 30px;
+		transform: translateX(4px);
 		padding: 6px;
 		border: 1px solid var(--line);
 		border-radius: 8px;
@@ -153,6 +154,10 @@
 		transition:
 			border-color 0.15s ease,
 			background 0.15s ease;
+	}
+
+	.social-label {
+		transform: translateX(1px);
 	}
 
 	.arrow {
