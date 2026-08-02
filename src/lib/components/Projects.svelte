@@ -7,7 +7,6 @@
 <section id="projects" class="section">
 	<header class="section-head">
 		<p class="eyebrow">Projects</p>
-		<h2>Selected work.</h2>
 	</header>
 
 	<div class="projects">
@@ -34,22 +33,12 @@
 		margin: 0 0 20px;
 		color: var(--fg-dim);
 		font-family: 'JetBrains Mono', ui-monospace, monospace;
-		font-size: 12px;
+		font-size: 13px;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 	}
 	.section-head {
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
-		gap: 24px;
 		margin-bottom: 40px;
-	}
-	h2 {
-		margin: 0;
-		font-size: clamp(22px, 2.6vw, 28px);
-		font-weight: 500;
-		letter-spacing: -0.02em;
 	}
 	.projects {
 		display: grid;
@@ -121,8 +110,6 @@
 			padding: 56px 0;
 		}
 		.section-head {
-			flex-direction: column;
-			gap: 8px;
 			margin-bottom: 28px;
 		}
 		.projects {

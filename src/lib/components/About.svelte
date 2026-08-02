@@ -18,10 +18,6 @@
 		</div>
 
 		<div class="socials-wrap">
-			<div class="socials-heading">
-				<span class="socials-index">01</span>
-				<p class="eyebrow">Find me online</p>
-			</div>
 			<ul class="socials">
 				{#each socials as social (social.label)}
 					<li>
@@ -84,7 +80,7 @@
 		margin: 0 0 20px;
 		color: var(--fg-dim);
 		font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-		font-size: 12px;
+		font-size: 13px;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 	}
@@ -92,7 +88,7 @@
 	h1 {
 		margin: 0 0 28px;
 		color: var(--fg);
-		font-size: clamp(28px, 4vw, 42px);
+		font-size: clamp(28px, 4vw, 40px);
 		font-weight: 500;
 		line-height: 1.18;
 		letter-spacing: -0.025em;
@@ -116,24 +112,6 @@
 
 	.socials-wrap {
 		padding: 8px 0;
-	}
-
-	.socials-heading {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-	}
-
-	.socials-wrap .eyebrow {
-		margin-bottom: 16px;
-	}
-
-	.socials-index {
-		align-self: flex-start;
-		padding-top: 1px;
-		color: var(--accent);
-		font-family: 'JetBrains Mono', ui-monospace, monospace;
-		font-size: 11px;
 	}
 
 	.socials {
@@ -210,7 +188,7 @@
 		}
 
 		h1 {
-			font-size: clamp(28px, 8vw, 36px);
+			font-size: clamp(28px, 8vw, 34px);
 		}
 	}
 </style>
