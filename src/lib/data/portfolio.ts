@@ -26,22 +26,13 @@ export const portfolio = {
 			]
 		},
 		{
-			company: 'Northwind Labs',
+			company: 'OpenAI',
 			role: 'Software Engineer',
-			period: '2022 — 2024',
-			location: 'Bangalore, IN',
+			period: '2026 — Present',
+			location: 'Remote',
 			points: [
-				'Built and shipped the payments microservice handling $2M+ monthly volume.',
-				'Migrated the legacy monolith to a typed, modular TypeScript codebase.'
-			]
-		},
-		{
-			company: 'Contoso',
-			role: 'Frontend Engineer Intern',
-			period: '2021 — 2022',
-			location: 'Hybrid',
-			points: [
-				'Implemented the marketing site redesign with a focus on accessibility and Core Web Vitals.'
+				'Developed and maintained AI-powered applications, enhancing user experience and performance.',
+				'Collaborated with cross-functional teams to integrate machine learning models into production systems.'
 			]
 		}
 	],

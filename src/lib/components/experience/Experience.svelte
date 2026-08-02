@@ -90,7 +90,7 @@
 		gap: 4px;
 		padding-top: 2px;
 		color: var(--fg-muted);
-		font-size: 12px;
+		font-size: 14px;
 		letter-spacing: 0.02em;
 	}
 	.job-period {
@@ -98,7 +98,7 @@
 	}
 	.job-body h3 {
 		margin: 0 0 12px;
-		font-size: 16px;
+		font-size: 17px;
 		font-weight: 500;
 		letter-spacing: -0.01em;
 	}
@@ -119,8 +119,8 @@
 		margin-bottom: 6px;
 		padding-left: 18px;
 		color: var(--fg-body);
-		font-size: 15px;
-		line-height: 1.6;
+		font-size: 16px;
+		line-height: 1.65;
 	}
 	.job-body li::before {
 		content: '';
