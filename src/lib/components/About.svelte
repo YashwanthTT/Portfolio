@@ -1,8 +1,6 @@
 <script lang="ts">
-	let { name, role, about, socials } = $props<{
-		name: string;
-		role: string;
-		about: { intro: string; paragraphs: string[] };
+	let { about, socials } = $props<{
+		about: { paragraphs: string[] };
 		socials: { label: string; href: string }[];
 	}>();
 </script>
@@ -10,7 +8,6 @@
 <section id="about" class="about">
 	<div class="about-content">
 		<div class="about-copy">
-			<h1>Hi, I'm {name} <span class="dash">—</span> a {role.toLowerCase()} {about.intro}</h1>
 			{#each about.paragraphs as paragraph, index (paragraph)}
 				<p class:muted={index === 1} class="lede">{paragraph}</p>
 			{/each}
@@ -73,19 +70,6 @@
 
 	.about-copy {
 		max-width: 680px;
-	}
-
-	h1 {
-		margin: 0 0 28px;
-		color: var(--fg);
-		font-size: clamp(28px, 4vw, 40px);
-		font-weight: 500;
-		line-height: 1.18;
-		letter-spacing: -0.025em;
-	}
-
-	.dash {
-		color: var(--fg-dim);
 	}
 
 	.lede {
@@ -180,10 +164,6 @@
 
 		.socials-wrap {
 			padding-top: 8px;
-		}
-
-		h1 {
-			font-size: clamp(28px, 8vw, 34px);
 		}
 	}
 </style>

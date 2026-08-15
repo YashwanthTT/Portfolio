@@ -18,7 +18,7 @@
 
 	<div class="page">
 		<Header {name} />
-		<About {name} {role} {about} {socials} />
+		<About {about} {socials} />
 		<Experience {experience} />
 		<Projects {projects} />
 		<Footer {name} />
