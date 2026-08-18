@@ -16,16 +16,6 @@ export const portfolio = {
 	],
 	experience: [
 		{
-			company: 'Acme Corp',
-			role: 'Senior Software Engineer',
-			period: '2024 — Present',
-			location: 'Remote',
-			points: [
-				'Lead the design and build of a customer-facing analytics platform used by 10k+ users.',
-				'Reduced p95 page load by 38% by rearchitecting the data-fetching layer.'
-			]
-		},
-		{
 			company: 'OpenAI',
 			role: 'Software Engineer',
 			period: '2026 — Present',
