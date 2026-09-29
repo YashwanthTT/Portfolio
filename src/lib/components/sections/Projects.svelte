@@ -66,7 +66,6 @@
 		<h2><span class="num mono">01</span> Selected work</h2>
 		<span class="mono head-hint">06 projects · hover to preview</span>
 	</div>
-	<span class="section-rule" aria-hidden="true"></span>
 	<div class="projects-scroll-wrap">
 		<HoverImg
 			projects={hoverProjects}
@@ -146,13 +145,6 @@
 		letter-spacing: 0.02em;
 		font-weight: 400;
 		white-space: nowrap;
-	}
-	.section-rule {
-		width: 100%;
-		max-width: 1200px;
-		margin: 0 auto 30px;
-		height: 1px;
-		background: #d9d0c2;
 	}
 	@media (max-width: 860px) {
 		.section { padding: 40px 20px 40px calc(var(--rail-width) + 20px); }

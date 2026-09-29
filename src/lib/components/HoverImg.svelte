@@ -109,8 +109,10 @@
 					<span class="hi-idx"><i class="hi-dot"></i>{String(i + 1).padStart(2, '0')}</span>
 					<span class="hi-go" aria-hidden="true">↗</span>
 				</span>
-				<h3 class="hi-title">{p.title}</h3>
-				<span class="hi-rule" aria-hidden="true"></span>
+				<span class="hi-name">
+					<h3 class="hi-title">{p.title}</h3>
+					<span class="hi-rule" aria-hidden="true"></span>
+				</span>
 				<p class="hi-stack mono">{p.stack}</p>
 			</button>
 		{/each}
@@ -155,7 +157,7 @@
 		text-transform: uppercase;
 	}
 
-	/* ---- horizontal row of columns (fits the horizontal-scroll theme) ---- */
+	/* ---- tight hairline columns: concise, precise, horizontal ---- */
 	.hi-projects {
 		display: flex;
 		width: 100%;
@@ -168,19 +170,19 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		gap: 22px;
-		padding: 30px 22px 26px;
+		gap: 16px;
+		padding: 18px 16px 16px;
 		border-left: 1px solid var(--p-line);
 		background: transparent;
 		font: inherit;
 		color: inherit;
 		text-align: left;
 		cursor: pointer;
-		min-height: 340px;
 		position: relative;
+		min-height: 248px;
 		transition:
-			opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-			background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+			opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+			background-color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.hi-col:first-child {
 		border-left: none;
@@ -191,7 +193,7 @@
 	}
 	.hi-projects:hover .hi-col:hover {
 		opacity: 1;
-		background: color-mix(in srgb, var(--accent) 6%, transparent);
+		background: color-mix(in srgb, var(--accent) 5%, transparent);
 	}
 
 	.hi-top {
@@ -204,6 +206,10 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 8px;
+		transition: color 0.5s ease;
+	}
+	.hi-col:hover .hi-idx {
+		color: var(--accent);
 	}
 	.hi-dot {
 		width: 6px;
@@ -213,9 +219,10 @@
 		transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.hi-col:hover .hi-dot {
-		transform: scale(1.6);
+		transform: scale(1.5);
 	}
 	.hi-go {
+		color: var(--accent);
 		opacity: 0;
 		transform: translate(-4px, 4px);
 		transition:
@@ -227,30 +234,34 @@
 		transform: translate(1px, -1px);
 	}
 
+	.hi-name {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
 	.hi-title {
 		font-family: 'Bodoni Moda', 'Times New Roman', serif;
-		font-size: clamp(24px, 2.1vw, 34px);
+		font-size: clamp(24px, 2.3vw, 32px);
 		font-weight: 500;
-		line-height: 1.02;
-		letter-spacing: -0.02em;
+		line-height: 1.04;
+		letter-spacing: -0.015em;
 		color: var(--p-ink);
 		margin: 0;
+		hyphens: none;
 		text-wrap: balance;
-		/* the "left" motion — expo-out, long and smooth */
+		/* the “left” motion — subtle, precise */
 		transform: translateX(0);
-		transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.hi-col:hover .hi-title {
-		transform: translateX(-8px);
+		transform: translateX(-6px);
 	}
-
 	.hi-rule {
 		display: block;
 		height: 1px;
 		width: 0;
 		background: var(--accent);
-		/* grows from the left → reinforces the leftward motion */
-		transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.hi-col:hover .hi-rule {
 		width: 100%;
@@ -258,16 +269,17 @@
 
 	.hi-stack {
 		margin: 0;
+		padding-top: 12px;
+		border-top: 1px solid var(--p-line);
 		color: var(--p-muted);
 		font-family: 'DM Sans', 'Inter', sans-serif;
 		font-size: 10px;
 		font-weight: 500;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
-		transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), color 0.5s ease;
+		transition: color 0.5s ease;
 	}
 	.hi-col:hover .hi-stack {
-		transform: translateX(-8px);
 		color: #6a6058;
 	}
 
@@ -377,7 +389,7 @@
 		.hi-col {
 			flex: 0 0 78vw;
 			max-width: 320px;
-			min-height: 260px;
+			min-height: 220px;
 		}
 		.hi-thumb-wrap {
 			display: none;

@@ -26,13 +26,13 @@ function HoverImg($$renderer, $$props) {
 		const each_array = ensure_array_like(projects);
 		for (let i = 0, $$length = each_array.length; i < $$length; i++) {
 			let p = each_array[i];
-			$$renderer.push(`<button class="hi-col svelte-1q5xeo3"${attr_style(`--accent:${stringify(p.accent)}`)} aria-haspopup="dialog"><span class="hi-top mono svelte-1q5xeo3"><span class="hi-idx svelte-1q5xeo3"><i class="hi-dot svelte-1q5xeo3"></i>${escape_html(String(i + 1).padStart(2, "0"))}</span> <span class="hi-go svelte-1q5xeo3" aria-hidden="true">↗</span></span> <h3 class="hi-title svelte-1q5xeo3">${escape_html(p.title)}</h3> <span class="hi-rule svelte-1q5xeo3" aria-hidden="true"></span> <p class="hi-stack mono svelte-1q5xeo3">${escape_html(p.stack)}</p></button>`);
+			$$renderer.push(`<button class="hi-col svelte-1q5xeo3"${attr_style(`--accent:${stringify(p.accent)}`)} aria-haspopup="dialog"><span class="hi-top mono svelte-1q5xeo3"><span class="hi-idx svelte-1q5xeo3"><i class="hi-dot svelte-1q5xeo3"></i>${escape_html(String(i + 1).padStart(2, "0"))}</span> <span class="hi-go svelte-1q5xeo3" aria-hidden="true">↗</span></span> <span class="hi-name svelte-1q5xeo3"><h3 class="hi-title svelte-1q5xeo3">${escape_html(p.title)}</h3> <span class="hi-rule svelte-1q5xeo3" aria-hidden="true"></span></span> <p class="hi-stack mono svelte-1q5xeo3">${escape_html(p.stack)}</p></button>`);
 		}
 		$$renderer.push(`<!--]--></div> <div class="hi-thumb-wrap svelte-1q5xeo3" aria-hidden="true"><!--[-->`);
 		const each_array_1 = ensure_array_like(projects);
 		for (let i = 0, $$length = each_array_1.length; i < $$length; i++) {
 			let p = each_array_1[i];
-			$$renderer.push(`<div class="hi-thumb svelte-1q5xeo3"${attr_style(`--accent:${stringify(p.accent)}`)}><div class="hi-thumb-bg svelte-1q5xeo3"></div> <div class="hi-thumb-grid svelte-1q5xeo3"></div> <div class="hi-thumb-shade svelte-1q5xeo3"></div> <span class="hi-thumb-num mono svelte-1q5xeo3">${escape_html(String(i + 1).padStart(2, "0"))}</span> <h4 class="hi-thumb-title svelte-1q5xeo3">${escape_html(p.title)}</h4> <span class="hi-thumb-stack mono svelte-1q5xeo3">${escape_html(p.stack)}</span></div>`);
+			$$renderer.push(`<div class="hi-thumb svelte-1q5xeo3"${attr_style(`--accent:${stringify(p.accent)}`)}><div class="hi-thumb-top mono svelte-1q5xeo3"><span class="hi-thumb-idx svelte-1q5xeo3"><i class="hi-thumb-dot svelte-1q5xeo3"></i>${escape_html(String(i + 1).padStart(2, "0"))}</span> <span class="hi-thumb-mark svelte-1q5xeo3">Selected work</span></div> <div class="hi-thumb-body svelte-1q5xeo3"><h4 class="hi-thumb-title svelte-1q5xeo3">${escape_html(p.title)}</h4> <span class="hi-thumb-rule svelte-1q5xeo3" aria-hidden="true"></span> <p class="hi-thumb-desc svelte-1q5xeo3">${escape_html(p.label)}</p></div> <span class="hi-thumb-stack mono svelte-1q5xeo3">${escape_html(p.stack)}</span></div>`);
 		}
 		$$renderer.push(`<!--]--></div></div>`);
 	});
