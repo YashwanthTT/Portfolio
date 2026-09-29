@@ -1,5 +1,6 @@
 <script lang="ts">
 	import DetailDrawer from '$lib/components/DetailDrawer.svelte';
+	import HoverImg from '$lib/components/HoverImg.svelte';
 
 	let projects = [
 		{
@@ -54,26 +55,24 @@
 
 	let selected = $state<number | null>(null);
 	let active = $derived(selected === null ? null : projects[selected]);
+
+	const hoverProjects = $derived(
+		projects.map((p) => ({ title: p.title, label: p.desc, accent: p.accent, stack: p.stack }))
+	);
 </script>
 
 <section id="projects" class="section" aria-label="Projects">
 	<div class="section-head">
 		<h2><span class="num mono">01</span> Selected work</h2>
-		<span class="mono head-hint">06 projects</span>
+		<span class="mono head-hint">06 projects · hover to preview</span>
 	</div>
+	<span class="section-rule" aria-hidden="true"></span>
 	<div class="projects-scroll-wrap">
-		<div class="projects-grid">
-			{#each projects as p, i}
-				<button class="card" style="--accent:{p.accent}" onclick={() => (selected = i)} aria-haspopup="dialog">
-					<div class="mono card-top"><span class="idx"><i class="card-dot"></i>{String(i + 1).padStart(2, '0')}</span><span class="go">↗</span></div>
-					<h3>{p.title}</h3>
-					<p class="card-desc">{p.desc}</p>
-					<div class="foot">
-						<p class="mono stack">{p.stack}</p>
-					</div>
-				</button>
-			{/each}
-		</div>
+		<HoverImg
+			projects={hoverProjects}
+			disabled={selected !== null}
+			onActivate={(i) => (selected = i)}
+		/>
 	</div>
 </section>
 
@@ -128,24 +127,32 @@
 		flex-wrap: wrap;
 	}
 	.section-head h2 {
-		font-size: 13px;
-		font-weight: 800;
-		letter-spacing: 0.14em;
+		font-family: 'DM Sans', 'Inter', sans-serif;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.18em;
 		line-height: 1.2;
 		text-transform: uppercase;
 		margin: 0;
 		display: flex;
 		align-items: baseline;
-		gap: 10px;
-		color: #0f172a;
+		gap: 12px;
+		color: #242220;
 	}
-	.num { color: #64748b; font-weight: 400; font-size: 11px; letter-spacing: 0.08em; }
+	.num { color: #8a8079; font-weight: 400; font-size: 11px; letter-spacing: 0.08em; }
 	.head-hint {
-		color: #64748b;
-		font-size: 12px;
+		color: #8a8079;
+		font-size: 11px;
 		letter-spacing: 0.02em;
 		font-weight: 400;
 		white-space: nowrap;
+	}
+	.section-rule {
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto 30px;
+		height: 1px;
+		background: #d9d0c2;
 	}
 	@media (max-width: 860px) {
 		.section { padding: 40px 20px 40px calc(var(--rail-width) + 20px); }
@@ -157,101 +164,14 @@
 		max-width: 1200px;
 		min-width: 0;
 		margin: 0 auto;
-		background: transparent;
-		border: none;
 		padding: 0;
-		overflow: visible;
 	}
-	.projects-grid {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 16px;
-		width: 100%;
-	}
-	@media (max-width: 1000px) {
-		.projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-	}
-	@media (max-width: 600px) {
-		.projects-scroll-wrap { overflow: hidden; }
-		.projects-grid {
-			display: flex;
-			gap: 12px;
-			overflow-x: auto;
-			scrollbar-width: none;
-		}
-		.projects-grid::-webkit-scrollbar { display: none; }
-	}
-	.card {
-		min-width: 0;
-		border: 1px solid var(--card-line);
-		border-radius: 4px;
-		padding: 14px 16px 16px;
-		background: white;
-		display: flex;
-		flex-direction: column;
-		min-height: 260px;
-		transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
-		font: inherit;
-		text-align: left;
-		cursor: pointer;
-		color: inherit;
-	}
-	@media (max-width: 600px) {
-		.card { flex: 0 0 min(82vw, 320px); }
-	}
-	.card:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 8px 16px rgba(15, 23, 42, 0.06);
-		border-color: var(--card-line-hover);
-	}
-	.card:hover .go { transform: translate(1px, -1px); }
-	.card-top {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		color: #64748b;
-		font-size: 11px;
-		margin-bottom: 14px;
-	}
-	.idx { display: inline-flex; align-items: center; gap: 8px; }
-	.go { transition: transform 0.15s; }
-	.card h3 {
-		font-size: 17px;
-		line-height: 1.3;
-		letter-spacing: -0.01em;
-		font-weight: 600;
-		color: #0f172a;
-		margin: 0;
-		text-wrap: balance;
-	}
-	.card-dot {
-		width: 7px;
-		height: 7px;
-		border-radius: 50%;
-		flex-shrink: 0;
-		background: var(--accent);
-	}
-	.card-desc {
-		color: #64748b;
-		font-size: 14px;
-		line-height: 1.6;
-		margin: 10px 0 0;
-	}
-	.foot { margin-top: auto; padding-top: 24px; }
-	.stack {
-		margin: 0;
-		padding-top: 12px;
-		border-top: 1px solid var(--line);
-		font-size: 11px;
-		letter-spacing: 0.02em;
-		color: #6b7280;
-	}
-	.kicker { text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; margin: 0 0 10px; }
-	.d-title { font-size: clamp(24px, 3.4vw, 34px); letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 12px; color: #0f172a; text-wrap: balance; }
-	.d-desc { font-size: 15px; line-height: 1.7; color: #334155; margin: 0 0 18px; max-width: 56ch; }
-	.d-points { margin: 0 0 22px; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.6; color: #0f172a; }
-	.d-link { display: inline-block; border: 1px solid var(--card-line); border-radius: 4px; background: #fff; padding: 8px 14px; color: #0f172a; }
+	.kicker { text-transform: uppercase; letter-spacing: 0.14em; color: #8a8079; margin: 0 0 12px; }
+	.d-title { font-family: 'Bodoni Moda', 'Times New Roman', serif; font-size: clamp(28px, 3.6vw, 40px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.04; margin: 0 0 14px; color: #242220; text-wrap: balance; }
+	.d-desc { font-family: 'Manrope', 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #4a423b; margin: 0 0 20px; max-width: 56ch; }
+	.d-points { margin: 0 0 24px; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; font-family: 'Manrope', 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #242220; }
+	.d-link { display: inline-block; border: 1px solid #c9c0b4; border-radius: 2px; background: #efe7d8; padding: 9px 16px; color: #242220; }
 	@media (prefers-reduced-motion: reduce) {
-		.card, .go { transition: none; }
+		/* motion handled inside HoverImg */
 	}
 </style>

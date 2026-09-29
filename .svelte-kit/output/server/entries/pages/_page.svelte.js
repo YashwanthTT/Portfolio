@@ -18,26 +18,33 @@ function DetailDrawer($$renderer, $$props) {
 	});
 }
 //#endregion
-//#region src/lib/components/sections/Projects.svelte
-function art($$renderer, preview) {
-	$$renderer.push(`<div class="preview-grid svelte-1fgsibr" aria-hidden="true"></div> `);
-	if (preview === "cerebras") $$renderer.push(`<!--[0--><div class="preview-logo svelte-1fgsibr"><span class="logo-c svelte-1fgsibr">◯</span> cerebras</div> <div class="preview-mount sm svelte-1fgsibr"></div>`);
-	else if (preview === "mountain") $$renderer.push(`<!--[1--><div class="preview-mountain svelte-1fgsibr"></div> <div class="preview-cloud svelte-1fgsibr"></div>`);
-	else if (preview === "extend") $$renderer.push(`<!--[2--><div class="preview-logo svelte-1fgsibr"><span class="logo-e svelte-1fgsibr">⬢</span> extend</div>`);
-	else if (preview === "trends") $$renderer.push(`<!--[3--><div class="preview-split svelte-1fgsibr"><div class="code-panel svelte-1fgsibr"><span class="pixel-cloud tiny svelte-1fgsibr"></span></div> <div class="trends-panel svelte-1fgsibr"><span class="trends-chip mono svelte-1fgsibr">SAN FRANCISCO ✕</span> <p class="trends-head svelte-1fgsibr">…biggest trending in the world are</p> <div class="trends-row svelte-1fgsibr"><span class="trends-brand svelte-1fgsibr">ANTHROP\\C</span> <span class="trends-more mono svelte-1fgsibr">+ MORE</span></div> <div class="trends-bars svelte-1fgsibr" aria-hidden="true"><i class="svelte-1fgsibr"></i><i class="svelte-1fgsibr"></i><i class="svelte-1fgsibr"></i><i class="svelte-1fgsibr"></i><i class="svelte-1fgsibr"></i><i class="svelte-1fgsibr"></i><i class="svelte-1fgsibr"></i><i class="svelte-1fgsibr"></i></div></div></div>`);
-	else if (preview === "sec") $$renderer.push(`<!--[4--><div class="preview-split svelte-1fgsibr"><div class="code-panel svelte-1fgsibr"></div> <div class="sec-panel svelte-1fgsibr"><span class="mono svelte-1fgsibr" style="font-size:6px">Company Search — EDGAR</span></div></div>`);
-	else if (preview === "reducto") $$renderer.push(`<!--[5--><div class="preview-logo svelte-1fgsibr"><span>◰</span> reducto</div>`);
-	else $$renderer.push("<!--[-1-->");
-	$$renderer.push(`<!--]-->`);
+//#region src/lib/components/HoverImg.svelte
+function HoverImg($$renderer, $$props) {
+	$$renderer.component(($$renderer) => {
+		let { projects = [], isContained = false, disabled = false, onActivate = (_i) => {} } = $$props;
+		$$renderer.push(`<div${attr_class("hi-container svelte-1q5xeo3", void 0, { "hi-contained": isContained })}><div class="hi-projects svelte-1q5xeo3"><!--[-->`);
+		const each_array = ensure_array_like(projects);
+		for (let i = 0, $$length = each_array.length; i < $$length; i++) {
+			let p = each_array[i];
+			$$renderer.push(`<button class="hi-col svelte-1q5xeo3"${attr_style(`--accent:${stringify(p.accent)}`)} aria-haspopup="dialog"><span class="hi-top mono svelte-1q5xeo3"><span class="hi-idx svelte-1q5xeo3"><i class="hi-dot svelte-1q5xeo3"></i>${escape_html(String(i + 1).padStart(2, "0"))}</span> <span class="hi-go svelte-1q5xeo3" aria-hidden="true">↗</span></span> <h3 class="hi-title svelte-1q5xeo3">${escape_html(p.title)}</h3> <span class="hi-rule svelte-1q5xeo3" aria-hidden="true"></span> <p class="hi-stack mono svelte-1q5xeo3">${escape_html(p.stack)}</p></button>`);
+		}
+		$$renderer.push(`<!--]--></div> <div class="hi-thumb-wrap svelte-1q5xeo3" aria-hidden="true"><!--[-->`);
+		const each_array_1 = ensure_array_like(projects);
+		for (let i = 0, $$length = each_array_1.length; i < $$length; i++) {
+			let p = each_array_1[i];
+			$$renderer.push(`<div class="hi-thumb svelte-1q5xeo3"${attr_style(`--accent:${stringify(p.accent)}`)}><div class="hi-thumb-bg svelte-1q5xeo3"></div> <div class="hi-thumb-grid svelte-1q5xeo3"></div> <div class="hi-thumb-shade svelte-1q5xeo3"></div> <span class="hi-thumb-num mono svelte-1q5xeo3">${escape_html(String(i + 1).padStart(2, "0"))}</span> <h4 class="hi-thumb-title svelte-1q5xeo3">${escape_html(p.title)}</h4> <span class="hi-thumb-stack mono svelte-1q5xeo3">${escape_html(p.stack)}</span></div>`);
+		}
+		$$renderer.push(`<!--]--></div></div>`);
+	});
 }
+//#endregion
+//#region src/lib/components/sections/Projects.svelte
 function Projects($$renderer) {
 	let projects = [
 		{
-			title: "Documentation checker with Cerebras",
+			title: "Docs verifier",
 			desc: "Crawl any docs site, discover its source repo, and verify documentation accuracy against the codebase.",
-			tag: "B",
 			accent: "#F06B2A",
-			preview: "cerebras",
 			stack: "TypeScript · Cerebras · Web crawler",
 			body: "Point it at a docs URL and it crawls the site, finds the source repo, and cross-checks every claim against the code. Stale examples and renamed flags get flagged before your users hit them.",
 			points: [
@@ -47,11 +54,9 @@ function Projects($$renderer) {
 			]
 		},
 		{
-			title: "Extract & download images",
+			title: "Image harvester",
 			desc: "Give it a URL, get back every image on the page. Handles product photos, hero images, and galleries.",
-			tag: "",
 			accent: "#5A7CE0",
-			preview: "mountain",
 			stack: "TypeScript · Image pipeline · ZIP export",
 			body: "Paste a URL, get a tidy gallery of every image on the page — hero shots, product photos, lazy-loaded sets. One click downloads the lot as a zip.",
 			points: [
@@ -61,11 +66,9 @@ function Projects($$renderer) {
 			]
 		},
 		{
-			title: "Download and parse receipts with Extend AI",
+			title: "Receipt parser",
 			desc: "Automate downloading expense receipts from web portals and extract structured data using AI.",
-			tag: "B",
 			accent: "#1a1a1a",
-			preview: "extend",
 			stack: "TypeScript · Extend AI · Expense portals",
 			body: "Logs into expense portals, pulls the receipts, and turns them into structured line items — vendor, date, totals, tax. No more screenshot folders at month end.",
 			points: [
@@ -75,11 +78,9 @@ function Projects($$renderer) {
 			]
 		},
 		{
-			title: "Extract trending keywords from Google Trends",
+			title: "Trends keywords",
 			desc: "Extract trending search keywords from Google Trends for any country with structured JSON output.",
-			tag: "",
 			accent: "#7AA3F0",
-			preview: "trends",
 			stack: "TypeScript · Google Trends · JSON API",
 			body: "Pick a country, get the trending searches as clean JSON — topics, volumes, trajectories. Built for content and SEO workflows that need data, not dashboards.",
 			points: [
@@ -89,11 +90,9 @@ function Projects($$renderer) {
 			]
 		},
 		{
-			title: "Extract SEC filing data",
+			title: "EDGAR lookup",
 			desc: "Search SEC EDGAR by company name, ticker, or CIK and extract recent filing metadata including filings.",
-			tag: "",
 			accent: "#1e3a5f",
-			preview: "sec",
 			stack: "TypeScript · SEC EDGAR · Filings parser",
 			body: "Search EDGAR by name, ticker, or CIK and pull recent filings with metadata — forms, dates, accession numbers — ready for analysis instead of scraping HTML tables.",
 			points: [
@@ -103,11 +102,9 @@ function Projects($$renderer) {
 			]
 		},
 		{
-			title: "PDF scraping and data extraction with Reducto",
+			title: "PDF extractor",
 			desc: "Automate downloading PDFs from websites and extract structured data using AI-powered parsing.",
-			tag: "B",
 			accent: "#7C3AED",
-			preview: "reducto",
 			stack: "TypeScript · Reducto · PDF pipeline",
 			body: "Finds the PDFs behind a site, downloads them, and extracts tables and fields with AI parsing. Built for the long tail of reports nobody wants to open by hand.",
 			points: [
@@ -119,25 +116,26 @@ function Projects($$renderer) {
 	];
 	let selected = null;
 	let active = derived(() => selected === null ? null : projects[selected]);
-	$$renderer.push(`<section id="projects" class="section svelte-1fgsibr" aria-label="Projects"><div class="section-head svelte-1fgsibr"><h2 class="svelte-1fgsibr"><span class="num mono svelte-1fgsibr">01</span> Selected work</h2> <span class="mono head-hint svelte-1fgsibr">06 projects</span></div> <div class="projects-scroll-wrap svelte-1fgsibr"><div class="projects-grid svelte-1fgsibr"><!--[-->`);
-	const each_array = ensure_array_like(projects);
-	for (let i = 0, $$length = each_array.length; i < $$length; i++) {
-		let p = each_array[i];
-		$$renderer.push(`<button class="card svelte-1fgsibr"${attr_style(`--accent:${stringify(p.accent)}`)} aria-haspopup="dialog"><h3 class="svelte-1fgsibr"><i class="card-dot svelte-1fgsibr"></i>${escape_html(p.title)}</h3> <p class="card-desc svelte-1fgsibr">${escape_html(p.desc)}</p> <div class="preview svelte-1fgsibr">`);
-		art($$renderer, p.preview);
-		$$renderer.push(`<!----> `);
-		if (p.tag) $$renderer.push(`<!--[0--><div class="b-tag svelte-1fgsibr">${escape_html(p.tag)}</div> <div class="b-stem svelte-1fgsibr"></div>`);
-		else $$renderer.push("<!--[-1-->");
-		$$renderer.push(`<!--]--></div></button>`);
-	}
-	$$renderer.push(`<!--]--></div></div></section> `);
+	const hoverProjects = derived(() => projects.map((p) => ({
+		title: p.title,
+		label: p.desc,
+		accent: p.accent,
+		stack: p.stack
+	})));
+	$$renderer.push(`<section id="projects" class="section svelte-1fgsibr" aria-label="Projects"><div class="section-head svelte-1fgsibr"><h2 class="svelte-1fgsibr"><span class="num mono svelte-1fgsibr">01</span> Selected work</h2> <span class="mono head-hint svelte-1fgsibr">06 projects · hover to preview</span></div> <div class="projects-scroll-wrap svelte-1fgsibr">`);
+	HoverImg($$renderer, {
+		projects: hoverProjects(),
+		disabled: selected !== null,
+		onActivate: (i) => selected = i
+	});
+	$$renderer.push(`<!----></div></section> `);
 	{
 		function detail($$renderer) {
 			if (active()) {
 				$$renderer.push(`<!--[0--><p class="mono kicker svelte-1fgsibr">Project — ${escape_html(active().stack)}</p> <h2 class="d-title svelte-1fgsibr">${escape_html(active().title)}</h2> <p class="d-desc svelte-1fgsibr">${escape_html(active().body)}</p> <ul class="d-points svelte-1fgsibr"><!--[-->`);
-				const each_array_1 = ensure_array_like(active().points);
-				for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
-					let pt = each_array_1[$$index_1];
+				const each_array = ensure_array_like(active().points);
+				for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+					let pt = each_array[$$index];
 					$$renderer.push(`<li>${escape_html(pt)}</li>`);
 				}
 				$$renderer.push(`<!--]--></ul> <span class="mono d-link svelte-1fgsibr">Open project ↗</span>`);
