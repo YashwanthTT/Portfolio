@@ -28,3 +28,4 @@ vite.config.ts.timestamp-*
 .hermes
 .opencode
 .pi
+.svelte-kit
